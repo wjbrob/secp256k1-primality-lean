@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build (fetches the Mathlib cache)
+        uses: leanprover/lean-action@v1
+
+      - name: Axiom check — only propext, Classical.choice, Quot.sound allowed
+        run: |
+          out="$(lake env lean scripts/AxiomCheck.lean)"
+          echo "$out"
+          test "$(echo "$out" | grep -c 'depends on axioms: \[propext, Classical.choice, Quot.sound\]')" -eq 2
