@@ -18,4 +18,4 @@ jobs:
         run: |
           out="$(lake env lean scripts/AxiomCheck.lean)"
           echo "$out"
-          test "$(echo "$out" | grep -c 'depends on axioms: \[propext, Classical.choice, Quot.sound\]')" -eq 2
+          test "$(echo "$out" | grep -c 'depends on axioms: \[propext, Classical.choice, Quot.sound\]')" -eq 3

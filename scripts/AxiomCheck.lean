@@ -5,3 +5,4 @@ Expected output for each theorem: only `propext`, `Classical.choice`, `Quot.soun
 
 #print axioms Secp256k1Primality.p_prime
 #print axioms Secp256k1Primality.n_prime
+#print axioms Secp256k1Primality.addOrderOf_G
